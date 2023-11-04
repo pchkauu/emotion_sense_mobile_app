@@ -22,7 +22,7 @@ class L {
     required Object? error,
     required StackTrace? stackTrace,
   }) {
-    if (!isDebugMode) return;
+    if (kDebugMode) return;
 
     logger.f(
       message,
