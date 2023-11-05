@@ -28,4 +28,10 @@ class L {
       stackTrace: stackTrace,
     );
   }
+
+  static void info({required String? message}) {
+    if (kReleaseMode) return;
+
+    logger.i(message);
+  }
 }

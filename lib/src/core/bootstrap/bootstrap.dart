@@ -47,8 +47,11 @@ Future<void> mobileBootstrap() async {
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
   ]);
+
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle.dark,
+  );
 }
 
 Future<void> desktopBootstrap() async {

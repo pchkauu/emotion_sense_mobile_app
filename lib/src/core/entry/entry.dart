@@ -21,7 +21,7 @@ Future<void> entry() async {
     case (DetectedPlatform.ios || DetectedPlatform.macos):
       {
         return runApp(
-          const EmotionSenseCupertino(),
+          const EmotionSenseMaterial(),
         );
       }
   }

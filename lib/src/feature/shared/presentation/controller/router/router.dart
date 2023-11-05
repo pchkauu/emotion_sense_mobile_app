@@ -9,13 +9,16 @@ final router = AppRouter().config();
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(
+        CustomRoute(
           page: Welcome.page,
           path: '/',
+          initial: true,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
-        AutoRoute(
+        CustomRoute(
           page: Introduction.page,
           path: '/introduction',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
       ];
 }
