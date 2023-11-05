@@ -41,6 +41,7 @@ flutter:
     - assets/ai_model/
     - assets/ui_kit/emotion/
     - assets/ui_kit/emotion_id/
+    - assets/ui_kit/navigation/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

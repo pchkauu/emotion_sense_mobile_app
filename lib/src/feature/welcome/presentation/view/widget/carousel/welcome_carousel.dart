@@ -17,8 +17,8 @@ class WelcomeCarousel extends StatelessWidget {
         autoPlay: true,
         autoPlayCurve: Sprung.overDamped,
         viewportFraction: 0.5,
-        autoPlayAnimationDuration: const Duration(seconds: 4),
-        autoPlayInterval: const Duration(seconds: 3),
+        autoPlayAnimationDuration: const Duration(seconds: 3),
+        autoPlayInterval: const Duration(milliseconds: 2300),
       ),
       items: [1, 2, 3, 4, 5, 6, 7].map(
         (i) {

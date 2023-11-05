@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:emotion_sense_mobile_app/src/feature/recognition/presentation/presentation.dart';
 import 'package:emotion_sense_mobile_app/src/feature/welcome/presentation/presentation.dart';
 
 part 'router.gr.dart';
@@ -19,6 +20,29 @@ class AppRouter extends _$AppRouter {
           page: Introduction.page,
           path: '/introduction',
           transitionsBuilder: TransitionsBuilders.fadeIn,
+        ),
+        CustomRoute(
+          page: Recognition.page,
+          path: '/recognition',
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          children: [
+            CustomRoute(
+              page: Hidden.page,
+              path: "_hidden",
+            ),
+            CustomRoute(
+              page: Discover.page,
+              path: "_discover",
+            ),
+            CustomRoute(
+              page: Study.page,
+              path: "_study",
+            ),
+            CustomRoute(
+              page: Static.page,
+              path: "_static",
+            ),
+          ],
         ),
       ];
 }

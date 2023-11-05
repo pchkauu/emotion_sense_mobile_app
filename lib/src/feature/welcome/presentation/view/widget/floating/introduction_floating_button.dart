@@ -26,7 +26,7 @@ class IntroductionFloatingButton extends StatelessWidget {
           ),
         ),
         onPressed: () async {
-          context.router.replace(const Introduction());
+          context.router.replace(const Recognition());
 
           final permissionGranted =
               await PermissionHandler.checkCameraPermissionGranted();
@@ -36,7 +36,7 @@ class IntroductionFloatingButton extends StatelessWidget {
           );
 
           if (permissionGranted) {
-            context.router.pop(const Introduction());
+            context.router.pop(const Recognition());
 
             return;
           } else {
