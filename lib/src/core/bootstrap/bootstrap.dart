@@ -1,9 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:emotion_sense_mobile_app/src/core/core.dart';
 import 'package:emotion_sense_mobile_app/src/foundation/platform/platform.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 Future<void> bootstrap() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  EquatableConfig.stringify = true;
 
   switch (detectedPlatform) {
     case (DetectedPlatform.unexpected):
@@ -14,7 +21,7 @@ Future<void> bootstrap() async {
           stackTrace: null,
         );
 
-        return;
+        throw Error();
       }
     case (DetectedPlatform.android || DetectedPlatform.ios):
       {
@@ -22,13 +29,28 @@ Future<void> bootstrap() async {
       }
     case (DetectedPlatform.desktop || DetectedPlatform.macos):
       {
-        await desktopBootstrap();
+        L.fatal(
+          message: 'Unsupported Platform',
+          error: null,
+          stackTrace: null,
+        );
+
+        // throw Error();
       }
   }
 
   return await configureDependencies();
 }
 
-Future<void> mobileBootstrap() async {}
+Future<void> mobileBootstrap() async {
+  await WakelockPlus.enable();
 
-Future<void> desktopBootstrap() async {}
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+}
+
+Future<void> desktopBootstrap() async {
+  return;
+}

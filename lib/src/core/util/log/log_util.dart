@@ -2,27 +2,25 @@ import 'package:emotion_sense_mobile_app/src/core/core.dart';
 import 'package:logger/logger.dart';
 
 class L {
-  static late final Logger logger;
+  static final Logger logger = Logger(
+    printer: PrettyPrinter(
+      methodCount: 2,
+      errorMethodCount: 8,
+      lineLength: 120,
+      colors: true,
+      printEmojis: true,
+      printTime: true,
+    ),
+  );
 
-  L() {
-    logger = Logger(
-      printer: PrettyPrinter(
-        methodCount: 2,
-        errorMethodCount: 8,
-        lineLength: 120,
-        colors: true,
-        printEmojis: true,
-        printTime: true,
-      ),
-    );
-  }
+  const L();
 
   static void fatal({
     required String? message,
     required Object? error,
     required StackTrace? stackTrace,
   }) {
-    if (kDebugMode) return;
+    if (kReleaseMode) return;
 
     logger.f(
       message,
