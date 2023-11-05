@@ -6,9 +6,27 @@ part 'hidden_event.dart';
 part 'hidden_state.dart';
 
 class HiddenBloc extends Bloc<HiddenEvent, HiddenState> {
-  HiddenBloc() : super(HiddenInitial()) {
+  HiddenBloc()
+      : super(
+          const HiddenInitial(
+            myEmotion: true,
+            frontCamera: true,
+          ),
+        ) {
+    on<HiddenToggleEvent>(
+      (event, emit) => const HiddenInitial(
+        myEmotion: false,
+        frontCamera: false,
+      ),
+    );
+
     on<HiddenResetEvent>(
-      (event, emit) => emit(HiddenInitial()),
+      (event, emit) => emit(
+        const HiddenInitial(
+          myEmotion: true,
+          frontCamera: true,
+        ),
+      ),
     );
 
     on<HiddenRecognizeEvent>((event, emit) async {

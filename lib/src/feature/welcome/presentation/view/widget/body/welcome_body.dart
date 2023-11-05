@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:emotion_sense_mobile_app/src/feature/welcome/presentation/presentation.dart';
@@ -29,9 +27,8 @@ class _WelcomeBodyState extends State<WelcomeBody>
           children: [
             Text(
               'app_name'.tr(),
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                     fontSize: 48.sp,
-                    color: Colors.black,
                   ),
             ),
             Padding(
@@ -45,7 +42,7 @@ class _WelcomeBodyState extends State<WelcomeBody>
                 'app_desc'.tr(),
                 style: Theme.of(context)
                     .textTheme
-                    .titleLarge!
+                    .bodyLarge!
                     .copyWith(height: 1.5),
                 textAlign: TextAlign.center,
               ),

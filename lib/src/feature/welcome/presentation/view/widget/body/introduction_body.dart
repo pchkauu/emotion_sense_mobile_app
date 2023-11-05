@@ -12,33 +12,31 @@ class IntroductionBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntroductionBackground(
       child: Center(
-        child: Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Добро пожаловать в EmotionSense - уникальное приложение, специально разработанное для людей с расстройством аутистического спектра!'
-                    .tr(),
+                'introduction'.tr(),
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      color: Colors.black,
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                      height: 1.25,
+                      fontSize: 24.sp,
                     ),
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: 24.w,
-                  right: 24.w,
                   top: 32.w,
                   bottom: 64.w,
                 ),
                 child: Text(
-                  'Мы понимаем, что распознавание эмоций может представлять трудность, и именно поэтому мы создали это приложение, чтобы помочь вам лучше понимать и взаимодействовать с эмоциональными аспектами окружающего мира.'
-                      .tr(),
+                  'introduction_desc'.tr(),
                   style: Theme.of(context)
                       .textTheme
-                      .titleSmall!
+                      .bodyLarge!
                       .copyWith(height: 1.5),
                   textAlign: TextAlign.center,
                 ),

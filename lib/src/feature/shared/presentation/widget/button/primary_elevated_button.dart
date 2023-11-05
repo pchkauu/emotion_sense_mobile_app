@@ -25,7 +25,7 @@ class PrimaryElevatedButton extends StatelessWidget {
             text,
             style: Theme.of(context)
                 .textTheme
-                .labelLarge!
+                .displayLarge!
                 .copyWith(color: Colors.white),
           ),
         ),

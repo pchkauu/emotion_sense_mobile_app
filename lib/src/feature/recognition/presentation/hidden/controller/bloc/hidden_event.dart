@@ -4,6 +4,22 @@ abstract class HiddenEvent extends Equatable {
   const HiddenEvent();
 }
 
+class HiddenToggleEvent extends HiddenEvent {
+  final EmotionType emotionType;
+  final CameraType cameraType;
+
+  const HiddenToggleEvent({
+    required this.emotionType,
+    required this.cameraType,
+  });
+
+  @override
+  List<Object?> get props => [
+        emotionType,
+        cameraType,
+      ];
+}
+
 class HiddenResetEvent extends HiddenEvent {
   const HiddenResetEvent();
 

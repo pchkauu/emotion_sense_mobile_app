@@ -1,8 +1,8 @@
-import 'dart:math';
-
 import 'package:auto_route/auto_route.dart';
-import 'package:emotion_sense_mobile_app/src/feature/recognition/domain/shared/entity/entity.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:emotion_sense_mobile_app/src/feature/recognition/domain/domain.dart';
 import 'package:emotion_sense_mobile_app/src/feature/recognition/presentation/presentation.dart';
+import 'package:emotion_sense_mobile_app/src/feature/shared/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,12 +29,15 @@ class HiddenPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Камера скрыта',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  'hidden.headline'.tr(),
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 Text(
-                  'Для вашего комфорта мы скрыли отображение изображения с камеры',
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  'hidden.subheadline'.tr(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge
+                      ?.copyWith(height: 1.5),
                   textAlign: TextAlign.center,
                 ),
                 Column(
@@ -47,8 +50,19 @@ class HiddenPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Мои эмоции'),
-                        RecognitionSwitch(callback: () {}),
+                        Text(
+                          state.myEmotion
+                              ? 'emotion.my'.tr()
+                              : 'emotion.other'.tr(),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                        ),
+                        RecognitionSwitch(
+                            callback: () => bloc.add(HiddenToggleEvent(
+                                emotionType: EmotionType.authistic,
+                                cameraType: CameraType.front))),
                       ],
                     ),
                     SizedBox(
@@ -59,19 +73,32 @@ class HiddenPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Фронтальная камера'),
+                        Text(
+                          state.frontCamera
+                              ? 'camera.front'.tr()
+                              : 'camera.back'.tr(),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                        ),
                         RecognitionSwitch(callback: () {}),
                       ],
                     ),
-                    TextButton(
-                        onPressed: () {
-                          bloc.add(HiddenRecognizeEvent(
-                              cameraType: CameraType.back,
-                              emotionType: EmotionType.normal));
-                        },
-                        child: Center(
-                          child: Text('Распознать'),
-                        ))
+                    SizedBox(
+                      height: 16.h,
+                    ),
+                    PrimaryElevatedButton(
+                      text: 'button.recognize'.tr(),
+                      callback: () {
+                        bloc.add(
+                          const HiddenRecognizeEvent(
+                            cameraType: CameraType.back,
+                            emotionType: EmotionType.normal,
+                          ),
+                        );
+                      },
+                    )
                   ],
                 )
               ],
@@ -80,44 +107,50 @@ class HiddenPage extends StatelessWidget {
         }
 
         if (state is HiddenFailure) {
-          return Stack(
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Ошибка',
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextButton(
-                        onPressed: () => bloc.add(const HiddenResetEvent()),
-                        child: Center(child: Text('Try Again')),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Lottie.asset('assets/ui_kit/lottie/failure.json'),
+          return SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Stack(
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'failure.title'.tr(),
+                          style: Theme.of(context).textTheme.headlineLarge,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 2,
+                          child: PrimaryElevatedButton(
+                              text: 'failure.try_again'.tr(),
+                              callback: () =>
+                                  bloc.add(const HiddenResetEvent())),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Lottie.asset('assets/ui_kit/lottie/failure.json'),
+                  ),
+                ),
+              ],
+            ),
           );
         }
 
@@ -130,7 +163,7 @@ class HiddenPage extends StatelessWidget {
               children: [
                 Text(
                   'Анализ',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ],
             ),

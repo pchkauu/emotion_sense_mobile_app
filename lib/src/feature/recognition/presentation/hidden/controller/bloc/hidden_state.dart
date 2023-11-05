@@ -5,8 +5,18 @@ abstract class HiddenState extends Equatable {
 }
 
 class HiddenInitial extends HiddenState {
+  final bool myEmotion;
+  final bool frontCamera;
+
+  const HiddenInitial({
+    required this.myEmotion,
+    required this.frontCamera,
+  });
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        myEmotion,
+        frontCamera,
+      ];
 }
 
 class HiddenPending extends HiddenState {

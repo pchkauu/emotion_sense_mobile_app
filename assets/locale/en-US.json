@@ -1,10 +1,39 @@
 {
     "app_name": "EmotionSense",
     "app_desc": "Open up a world of emotions with our app for people with autism spectrum disorder",
+    "introduction": "Welcome to EmotionSense\na unique app designed for people with autism spectrum disorder!",
+    "introduction_desc": "We understand that recognizing emotions can be difficult, which is why we created this app to help you better understand and interact with the emotional aspects of the world around you",
     "button" : {
-        "go": "Go",
+        "study": "Study",
         "next": "Next",
-        "start": "Start"
+        "start": "Start",
+        "recognize": "Recognize",
+        "load": "Load Photo"
+    },
+    "hidden": {
+        "headline": "Camera is hidden",
+        "subheadline": "For your comfort, we have hidden the camera display"
+    },
+    "failure": {
+        "title": "Failure",
+        "try_again": "Try Again"
+    },
+    "emotion": {
+        "my": "My emotions",
+        "other": "Emotions of other"
+    },
+    "camera": {
+        "front": "Front camera",
+        "back": "Back camera"
+    },
+    "training": {
+        "headline": "Emotional training",
+        "subheadline": "This section is designed to allow you to practice expressing different emotions"
+    },
+    "static": {
+        "headline": "Image upload",
+        "subheadline": "Here you can upload a photo and get the result of emotion analysis, based on which you can better understand the state and expression of the face in the photo",
+        "description": "The analysis process may take some time, depending on the size of the file and the speed of your internet connection. Please be patient"
     }
     
 }
