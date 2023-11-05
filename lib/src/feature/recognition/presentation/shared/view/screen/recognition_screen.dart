@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 
 @RoutePage(name: 'Recognition')
 class RecognitionScreen extends StatelessWidget {
-  const RecognitionScreen({super.key});
+  const RecognitionScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

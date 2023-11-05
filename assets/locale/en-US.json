@@ -1,10 +1,10 @@
 {
     "app_name": "EmotionSense",
-    "app_desc": "Откройте мир эмоций вместе с нашим приложением для людей с расстройством аутистического спектра",
+    "app_desc": "Open up a world of emotions with our app for people with autism spectrum disorder",
     "button" : {
         "go": "Go",
-        "next": "Далее",
-        "start": "Начать"
+        "next": "Next",
+        "start": "Start"
     }
     
 }
