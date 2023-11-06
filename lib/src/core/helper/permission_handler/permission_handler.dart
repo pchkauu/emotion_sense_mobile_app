@@ -2,7 +2,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class PermissionHandler {
   static Future<bool> requestCameraPermission() async {
-    await Permission.camera.request().isGranted;
+    await Permission.photos.request().isGranted;
 
     return checkCameraPermissionGranted();
   }

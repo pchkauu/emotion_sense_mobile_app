@@ -12,6 +12,7 @@ class WelcomeFloatingButton extends StatelessWidget {
 
   Future<void> onPressed(BuildContext context) async {
     context.router.replace(const Introduction());
+    return;
 
     final permissionGranted =
         await PermissionHandler.checkCameraPermissionGranted();
@@ -25,7 +26,7 @@ class WelcomeFloatingButton extends StatelessWidget {
 
       return;
     } else {
-      PermissionHandler.requestCameraPermission();
+      await PermissionHandler.requestCameraPermission();
     }
   }
 

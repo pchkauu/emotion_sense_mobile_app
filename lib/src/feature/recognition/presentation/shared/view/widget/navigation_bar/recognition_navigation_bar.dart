@@ -115,7 +115,7 @@ class _RecognitionNavigationBarState extends State<RecognitionNavigationBar> {
               height: 48,
               child: Center(
                 child: SvgPicture.asset(
-                  'assets/ui_kit/navigation/lesson.svg',
+                  'assets/ui_kit/navigation/study.svg',
                   width: 48,
                   height: 48,
                 ),
