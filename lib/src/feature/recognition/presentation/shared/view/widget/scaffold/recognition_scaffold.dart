@@ -13,15 +13,21 @@ class RecognitionScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: RecognitionBackground(
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-            child: child,
-          ),
-        ),
-      ),
+      body: child,
       bottomNavigationBar: const RecognitionNavigationBar(),
     );
   }
 }
+
+
+//  return Scaffold(
+//       body: RecognitionBackground(
+//         child: SafeArea(
+//           child: Padding(
+//             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+//             child: child,
+//           ),
+//         ),
+//       ),
+//       bottomNavigationBar: const RecognitionNavigationBar(),
+//     );

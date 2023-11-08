@@ -36,6 +36,7 @@
         "subheadline": "Here you can upload a photo and get the result of emotion analysis, based on which you can better understand the state and expression of the face in the photo",
         "description": "The analysis process may take some time, depending on the size of the file and the speed of your internet connection. Please be patient"
     },
+    "analize": "Analyzing",
     "angry": "Злость",
     "contempt": "Презрение",
     "disgust": "Отвращение",
@@ -43,5 +44,6 @@
     "happy": "Счастье",
     "sad": "Грусть",
     "surprised": "Удивление",
-    "neutral": "Нейтральная"
+    "neutral": "Нейтральная",
+    "sorry": "This mode is under development. Be with us and we will definitely succeed"
 }

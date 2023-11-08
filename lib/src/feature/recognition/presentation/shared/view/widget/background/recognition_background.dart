@@ -25,7 +25,8 @@ class _RecognitionBackgroundState extends State<RecognitionBackground>
           baseColor: Colors.accents[Random().nextInt(
             Colors.accents.length,
           )],
-          spawnMaxRadius: 20,
+          spawnMaxRadius: 5,
+          maxOpacity: 0.2,
           spawnMinSpeed: 5,
           spawnMaxSpeed: 15,
           particleCount: 20,
@@ -38,6 +39,7 @@ class _RecognitionBackgroundState extends State<RecognitionBackground>
             baseColor: Colors.accents[Random().nextInt(
               Colors.accents.length,
             )],
+            maxOpacity: 0.2,
             spawnMaxRadius: 15,
             spawnMinSpeed: 4,
             spawnMaxSpeed: 10,
